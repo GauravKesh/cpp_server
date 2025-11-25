@@ -74,14 +74,14 @@ Then type messages (press Enter to send).
         │  (Client 1)           │     │  (Client 2)           │
         │  ┌─────────────────┐  │     │  ┌─────────────────┐  │
         │  │ 1. recv() data  │  │     │  │ 1. recv() data  │  │
-        │  │ 2. Create Message│ │     │  │ 2. Create Message│ │
-        │  │    - clientId    │  │     │  │    - clientId    │  │
-        │  │    - timestamp   │  │     │  │    - timestamp   │  │
-        │  │    - text        │  │     │  │    - text        │  │
-        │  │    - priority    │  │     │  │    - priority    │  │
-        │  │ 3. Push to queue │  │     │  │ 3. Push to queue │  │
-        │  └─────────────────┘  │     │  └─────────────────┘  │
-        └───────────┬───────────┘     └───────────┬───────────┘
+        │  │ 2. Create Message│ │     │  │ 2. Create Message│  │  
+        │  │    - clientId    │  │    │  │    - clientId    │  │
+        │  │    - timestamp   │  │    │  │    - timestamp   │  │
+        │  │    - text        │  │    │  │    - text        │  │
+        │  │    - priority    │  │    │  │    - priority    │  │
+        │  │ 3. Push to queue │  │    │  │ 3. Push to queue │  │
+        │  └─────────────────┘  │     │  └─────────────────┘   │
+        └───────────┬───────────┘     └───────────┬────────────┘
                     │                             │
                     └──────────────┬──────────────┘
                                    ▼
@@ -122,14 +122,14 @@ Then type messages (press Enter to send).
 │ CLIENT  │                                              │ SERVER  │
 └────┬────┘                                              └────┬────┘
      │                                                        │
-     │  1. TCP Connection (nc localhost 9090)                │
+     │  1. TCP Connection (nc localhost 9090)                 │
      ├───────────────────────────────────────────────────────▶
      │                                                        │
      │                        2. accept() creates worker thread
      │                           clientId = "client-0"        │
-     │                           Store in clientSocketMap    │
+     │                           Store in clientSocketMap     │
      │                                                        │
-     │  3. Type message: "Hello Server"                      │
+     │  3. Type message: "Hello Server"                       │
      ├───────────────────────────────────────────────────────▶
      │                                                        │
      │                   4. Worker Thread recv() ────┐       │
@@ -152,9 +152,9 @@ Then type messages (press Enter to send).
      │  8. ACK: "Received: Hello Server"                     │
      │◀───────────────────────────────────────────────────────
      │                      send() ──────────────────┘       │
-     │                                                        │
+     │                                                       │
      │  9. Client sees response                              │
-     │                                                        │
+     │                                                       │
 ```
 
 ### Component Breakdown
