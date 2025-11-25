@@ -1,6 +1,7 @@
 # Compiled binaries
 main
 *.out
+server
 
 # Object files
 *.o
